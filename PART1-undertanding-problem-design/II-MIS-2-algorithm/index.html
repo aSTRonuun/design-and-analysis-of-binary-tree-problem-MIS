@@ -9,6 +9,54 @@
 <body>
     <h3>Pseudocódigo</h3>
 
+    <pre>
+        <code>
+            1 -  Node {
+            2 -    dados
+            3 -    esquerda
+            4 -    direita
+            5    -  
+            6 -    Node(dados) {
+            7 -      this.dados = dados
+            8 -      this.esquerda = this.direita = null
+            9 -    }
+            10 -  }
+            11 -
+            12 -  FindMISSize(noRaiz, map) {
+            13 -    if (noRaiz == null) 
+            14 -      retorne 0
+            15 -
+            16 -    if (map.get(noRaiz) != null) 
+            17 -      retorne map.get(noRaiz)
+            18 -  
+            19 -    filhoEsquerda = noRaiz.esquerda
+            20 -    filhoDireita = noRaiz.direita
+            21 -    excluir = FindMISSize(filhoEsquerda, map) + FindMISSize(filhoDireita, map)
+            22 -    incluir = 1
+            23 -  
+            24 -    if (filhoEsquerda != null) {
+            25 -      netoEsquerda = filhoEsquerda.esquerda
+            26 -      netoDireita = filhoEsquerda.direita
+            27 -      incluir += FindMISSize(netoEsquerda, map) + FindMISSize(netoDireita, map)
+            28 -    }
+            29 -  
+            30 -    if (filhoDireita != null) { 
+            31 -      netoEsquerda = filhoDireita.esquerda
+            32 -      netoDireita = filhoDireita.direita
+            33 -      incluir += FindMISSize(netoEsquerda, map) + FindMISSize(netoDireita, map)
+            34 -    }
+            35 -
+            36 -    map.put(noRaiz, max(excluir, incluir))
+            37 -    retorne map.get(noRaiz)
+            38 -  }
+            39 -
+            40 -  buscaMISMap(noRaiz) {
+            41 -    HashMap map = new HashMap()
+            42 -    retorne FindMISSize(noRaiz, map)
+            43 -  }
+        </code>
+    </pre>
+
     <h3>Justifique sua corretude</h3>
 
     <p>
@@ -16,7 +64,7 @@
     </p>
 
     <p>
-        Assim, queremos provar que P(n) = "FindMISSize(root, d)" retorna a quantidade de elementos do Conjunto Independente Máximo, para qualquer tamanho da árvore.
+        Assim, queremos provar que P(n) = "FindMISSizeMap(root)" retorna a quantidade de elementos do Conjunto Independente Máximo, para qualquer tamanho da árvore.
     </p>
 
     <p>

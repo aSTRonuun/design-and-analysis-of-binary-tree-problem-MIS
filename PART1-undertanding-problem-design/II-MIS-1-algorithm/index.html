@@ -9,6 +9,44 @@
 <body>
     <h3>Pseudocódigo</h3>
 
+    <pre>
+        <code>
+            0 -  Node {
+            1 -    dados
+            2 -    esquerda
+            3 -    direita
+            4 -  
+            5 -    Node(dados) {
+            6 -      this.dados = dados
+            7 -      this.esquerda = this.direita = null
+            8 -    }
+            9 -  }
+            10 -
+            11 -  FindMISSize(noRaiz) {
+            12 -    if (noRaiz == null) 
+            14 -      retorne 0
+            15 -  
+            16 -    filhoEsquerda = noRaiz.esquerda
+            17 -    filhoDireita = noRaiz.direita
+            18 -    excluir = FindMISSize(filhoEsquerda) + FindMISSize(filhoDireita)
+            19 -    incluir = 1
+            20 -  
+            21 -    if (filhoEsquerda != null) {
+            22 -      netoEsquerda = filhoEsquerda.esquerda
+            23 -      netoDireita = filhoEsquerda.direita
+            24 -      incluir += FindMISSize(netoEsquerda) + FindMISSize(netoDireita)
+            25 -    }
+            26 -  
+            27 -    if (filhoDireita != null) {
+            28 -      netoEsquerda = filhoDireita.esquerda
+            29 -      netoDireita = filhoDireita.direita
+            30 -      incluir += FindMISSize(netoEsquerda) + FindMISSize(netoDireita)
+            31 -    }
+            32 -    retorne max(excluir, incluir)
+            33 -  }
+        </code>
+    </pre>
+
     <h3>Justifique sua corretude</h3>
     Para provar a corretude do algoritmo podemos usar a seguinte método de indução para pecorrer a árvore e calcular o MIS:
 
