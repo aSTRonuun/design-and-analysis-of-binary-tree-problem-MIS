@@ -11,37 +11,37 @@
 
     <pre>
         <code>
-            1.      # Estrutura de dados para armazenar um nó de árvore binário
-            2.      Nó:
-            3.          <i>dado</i>
-            4.          <i>esquerda</i>
-            5.          <i>direita</i>
+            1.  # Estrutura de dados para armazenar um nó de árvore binário
+            2.  Nó:
+            3.      <i>dado</i>
+            4.      <i>esquerda</i>
+            5.      <i>direita</i>
             6.
-            7.      Nó(<i>dado</i>, <i>esquerda</i>, <i>direita</i>):
-            8.          <i>dado</i> = dado
-            9.          <i>esquerda</i> = esquerda
-            10.         <i>direita</i> = direita
+            7.  Nó(<i>dado</i>, <i>esquerda</i>, <i>direita</i>):
+            8.      <i>dado</i> = dado
+            9.      <i>esquerda</i> = esquerda
+            10.     <i>direita</i> = direita
             11.    
-            12.     # Função recursiva para encontrar o tamanho do máximo conjunto independente para uma árvore binária
-            13.     findMISSize(<i>raiz</i>):
-            14.         # Caso base: árvore vazia
-            15.         <strong>se</strong> (<i>raiz</i> == null) <strong>faça</strong>:
-            16.             <strong>retorne</strong> 0
+            12. # Função recursiva para encontrar o tamanho do máximo conjunto independente para uma árvore binária
+            13. findMISSize(<i>raiz</i>):
+            14.     # Caso base: árvore vazia
+            15.     <strong>se</strong> (<i>raiz</i> == null) <strong>faça</strong>:
+            16.         <strong>retorne</strong> 0
             17.    
-            18.         # Caso 1: Excluir o nó atual do máximo conjunto independente e percorrer seu filho esquerdo e direito
-            19.         <i>excl</i> = findMISSize(<i>raiz.esquerda</i>) + findMISSize(<i>raiz.direita</i>)
+            18.     # Caso 1: Excluir o nó atual do máximo conjunto independente e percorrer seu filho esquerdo e direito
+            19.     <i>excl</i> = findMISSize(<i>raiz.esquerda</i>) + findMISSize(<i>raiz.direita</i>)
             20.    
-            21.         # Caso 2: Incluir o nó atual no máximo conjunto independente e recorrente para seus netos
-            22.         <i>incl</i> = 1
+            21.     # Caso 2: Incluir o nó atual no máximo conjunto independente e recorrente para seus netos
+            22.     <i>incl</i> = 1
             23.    
-            24.         <strong>se</strong> (<i>raiz.esquerda</i>) <strong>faça</strong>:
-            25.             <i>incl</i> += findMISSize(<i>raiz.esquerda.esquerda</i>) + findMISSize(<i>raiz.esquerda</i>.direita)
+            24.     <strong>se</strong> (<i>raiz.esquerda</i>) <strong>faça</strong>:
+            25.         <i>incl</i> += findMISSize(<i>raiz.esquerda.esquerda</i>) + findMISSize(<i>raiz.esquerda</i>.direita)
             26.    
-            27.         <strong>se</strong> <i>raiz.direita</i> <strong>faça</strong>:
-            28.             <i>incl</i> += findMISSize(<i>raiz.direita.esquerda</i>) + findMISSize(<i>raiz.direita.direita</i>)
+            27.     <strong>se</strong> <i>raiz.direita</i> <strong>faça</strong>:
+            28.         <i>incl</i> += findMISSize(<i>raiz.direita.esquerda</i>) + findMISSize(<i>raiz.direita.direita</i>)
             29.    
-            30.         # salve e retorne o número máximo de nós possível, incluindo ou excluindo o nó atual
-            31.         <strong>retorne</strong> max(<i>excl</i>, <i>incl</i>)
+            30.     # salve e retorne o número máximo de nós possível, incluindo ou excluindo o nó atual
+            31.     <strong>retorne</strong> max(<i>excl</i>, <i>incl</i>)
         </code>
     </pre>
 

@@ -11,49 +11,43 @@
 
     <pre>
         <code>
-            1 -  Node {
-            2 -    dados
-            3 -    esquerda
-            4 -    direita
-            5    -  
-            6 -    Node(dados) {
-            7 -      this.dados = dados
-            8 -      this.esquerda = this.direita = null
-            9 -    }
-            10 -  }
-            11 -
-            12 -  FindMISSize(noRaiz, map) {
-            13 -    if (noRaiz == null) 
-            14 -      retorne 0
-            15 -
-            16 -    if (map.get(noRaiz) != null) 
-            17 -      retorne map.get(noRaiz)
-            18 -  
-            19 -    filhoEsquerda = noRaiz.esquerda
-            20 -    filhoDireita = noRaiz.direita
-            21 -    excluir = FindMISSize(filhoEsquerda, map) + FindMISSize(filhoDireita, map)
-            22 -    incluir = 1
-            23 -  
-            24 -    if (filhoEsquerda != null) {
-            25 -      netoEsquerda = filhoEsquerda.esquerda
-            26 -      netoDireita = filhoEsquerda.direita
-            27 -      incluir += FindMISSize(netoEsquerda, map) + FindMISSize(netoDireita, map)
-            28 -    }
-            29 -  
-            30 -    if (filhoDireita != null) { 
-            31 -      netoEsquerda = filhoDireita.esquerda
-            32 -      netoDireita = filhoDireita.direita
-            33 -      incluir += FindMISSize(netoEsquerda, map) + FindMISSize(netoDireita, map)
-            34 -    }
-            35 -
-            36 -    map.put(noRaiz, max(excluir, incluir))
-            37 -    retorne map.get(noRaiz)
-            38 -  }
-            39 -
-            40 -  buscaMISMap(noRaiz) {
-            41 -    HashMap map = new HashMap()
-            42 -    retorne FindMISSize(noRaiz, map)
-            43 -  }
+            1.  # Estrutura de dados para armazenar um nó de árvore binário
+            2.  Nó:
+            3.      <i>dado</i>
+            4.      <i>esquerda</i>
+            5.      <i>direita</i>
+            6.
+            7.      Nó(<i>dado</i>, <i>esquerda</i>, <i>direita</i>):
+            8.          <i>dado</i> = dado
+            9.          <i>esquerda</i> = esquerda
+            10.         <i>direita</i> = direita
+            11.    
+            12.    
+            13. # Função recursiva para encontrar o tamanho do máximo conjunto independente para uma árvore binária
+            14. findMIS(<i>raiz</i>, <i>d</i>):
+            15.    
+            16. # Caso base: árvore vazia
+            17. <strong>se</strong> <i>raiz</i> == null <strong>faça</strong>:
+            18.     <strong>retorne</strong> 0
+            19.    
+            20. <strong>se</strong> <i>raiz</i> está em <i>d</i> <strong>faça</strong>:
+            21.     <strong>retorne</strong> d[raiz]
+            22.    
+            23. # Caso 1: Excluir o nó atual do máximo conjunto independente e recorrer para seu filho esquerdo e direito
+            24. <i>excl</i> = findMIS(<i>raiz.esquerda</i>, <i>d</i>) + findMIS(<i>raiz.direita</i>, <i>d</i>)
+            25.    
+            26. # Caso 2: Incluir o nó atual no máximo conjunto independente e recorrente para seus netos
+            27. <i>incl</i> = 1
+            28.    
+            29. <strong>se</strong> <i>raiz.esquerda</i> <strong>faça</strong>:
+            30.     <i>incl</i> += findMIS(<i>raiz.esquerda.esquerda</i>, <i>d</i>) + findMIS(<i>raiz.esquerda.direita</i>, <i>d</i>)
+            31.    
+            32. <strong>se</strong> <i>raiz.direita</i> <strong>faça</strong>:
+            33.     <i>incl</i> += findMIS(<i>raiz.direita.esquerda</i>, <i>d</i>) + findMIS(<i>raiz.direita.direita</i>, <i>d</i>)
+            34.    
+            35. # salve e retorne o número máximo de nós possível, incluindo ou excluindo o nó atual
+            36. <i>d[raiz]</i> = max(<i>excl</i>, <i>incl</i>)
+            37. <strong>retorne</strong> <i>d[raiz]</i>
         </code>
     </pre>
 
